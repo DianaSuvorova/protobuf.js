@@ -51,7 +51,8 @@ tape.test("test1", function (test) {
 
     var protoFilePath = "tests/data/repro/test1.proto";
     var root = new protobuf.Root();
-    root.loadSync(protoFilePath);
+    var parsedProto = root.loadSync(protoFilePath);
+    parsedProto.resolveAll();
     test.ok(root.lookup("SideEffectTask"), "should parse message SideEffectTask")
     test.end();
 });
@@ -60,7 +61,8 @@ tape.test("test2", function (test) {
 
     var protoFilePath = "tests/data/repro/test2.proto";
     var root = new protobuf.Root();
-    root.loadSync(protoFilePath);
+    var parsedProto = root.loadSync(protoFilePath);
+    parsedProto.resolveAll();
     test.ok(root.lookup("SideEffectTask"), "should parse message SideEffectTask")
     test.end();
 });
