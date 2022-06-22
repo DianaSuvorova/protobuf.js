@@ -46,3 +46,22 @@ tape.test("should load bundled definitions even if resolvePath method was overri
     test.ok(root.lookup("Something"), "should parse message Something");
     test.end();
 });
+
+tape.test("test1", function (test) {
+
+    var protoFilePath = "tests/data/repro/test1.proto";
+    var root = new protobuf.Root();
+    root.loadSync(protoFilePath);
+    test.ok(root.lookup("SideEffectTask"), "should parse message SideEffectTask")
+    test.end();
+});
+
+tape.test("test2", function (test) {
+
+    var protoFilePath = "tests/data/repro/test2.proto";
+    var root = new protobuf.Root();
+    root.loadSync(protoFilePath);
+    test.ok(root.lookup("SideEffectTask"), "should parse message SideEffectTask")
+    test.end();
+});
+
