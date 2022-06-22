@@ -15,7 +15,7 @@ function cliTest(test, testFunc) {
     // Alter the require cache to make the cli/targets/static work since it requires "protobufjs"
     // and we don't want to mess with "npm link"
     var savedResolveFilename = Module._resolveFilename;
-    Module._resolveFilename = function(request, parent) { 
+    Module._resolveFilename = function(request, parent) {
       if (request.startsWith("protobufjs")) {
         return request;
       }
@@ -152,4 +152,23 @@ tape.test("with null-defaults, absent optional fields have null values", functio
             test.end();
         });
     });
+});
+
+
+tape.test("test1", function(test) {
+    protobuf.load("tests/data/repro/test1.proto", undefined, function(err, root) {
+      if (err) {
+        return test.fail(err.message);
+      }
+        test.end();
+    });
+});
+
+tape.test("test2", function(test) {
+  protobuf.load("tests/data/repro/test2.proto", undefined, function(err, root) {
+    if (err) {
+      return test.fail(err.message);
+    }
+      test.end();
+  });
 });
